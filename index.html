@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garantia</title>
+    <style>
+        @page {
+            size: Letter;
+            margin: 10mm;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            text-align: justify;
+            margin: auto;
+            width: 216mm;
+            height: 279mm;
+        }
+        .line, .fecha, #expira, #imei, #item{
+            letter-spacing: 0;
+        }
+        h1, h2 {
+             font-weight: bold;
+             font-size: 1.2rem;
+             text-decoration:underline;
+            }
+            p {
+                letter-spacing: 1px;
+            }
+        .container{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2em;
+            line-height: 2;
+        }
+        h1{
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .fecha, #imei, #item, #expira{
+            text-decoration: underline;
+        }
+        .lista_procedimiento ul {
+            list-style: square;
+        }
+        .lista_condiciones {
+            list-style-type: decimal;
+        }
+        .firmas{
+            display: flex;
+            justify-content: space-between;
+        }
+        .firmas p{
+            margin-top: 4em;
+            padding: 5px;
+            border-top: solid 1px #000;
+            width: 300px;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CERTIFICACIÓN DE GARANTIA</h1>
+            <p class="datos_generales">
+                Por este medio, la tienda iGRIEGUS STORE otorga la garantía al señor/a: <span class="line">___________________________________________________________________________________</span> con número de DNI: <span class="line">_________________________________________</span> por la venta del equipo: <span id="item"></span> con numero de IMEI:  <span id="imei"></span> realizada el día <span class="fecha"></span> con vigencia de 30 días a partir de la fecha de compra. 
+            </p>
+        </div>
+        <div class="terminos">
+            <h2>TERMINOS Y CONDICIONES</h2>
+            <p>Esta garantía ampara exclusivamente defectos de funcionamiento interno (hardware) que impidan el uso normal del equipo,, siempre que dichos defectos no sean consecuencia de mal uso, accidente o alteración del dispositivo.</p>
+            <p>Cobertura:</p>
+            <ul class="lista_cobertura">
+                <li>Defectos de fábrica en componentes internos como: placa madre, memoria, chip de carga, antena, botones de función.</li>
+                <li>
+                    Fallas en el sistema operativo (software) siempre que no hayan sido provocadas por el usuario mediante modificaciones no autorizadas (rooteo, jailbreak, flasheo no profesional).
+                </li>
+            </ul>
+            <p>Exluxiones de cobertura:</p>
+            <ul class="lista_exclusiones">
+                <li>Daños estéticos: rayones, desgaste de pintura,marcas en la pantalla o carcasa.</li>
+                <li>Daños por golpes, caídas, líquidos, humedad, temperaturas extremas o uso indebido.</li>
+                <li>Accesorios como cargadores, cables, audífonos o baterías (estos tienen 7 días de
+                garantía por defecto de fábrica).</li>
+                <li>Pérdida de datos personales. Se recomienda al cliente realizar respaldos
+                periódicos.
+                </li>
+                <li>Modificaciones realizadas por el usuario o terceros no autorizados</li>
+            </ul>
+        </div>
+        <div class="procedimiento">
+            <h2>PROCEDIMIENTO PARA HACER EFECTIVA LA GARANTÍA</h2>
+            <ul class="lista_procedimiento">
+                <li>El comprador deberá comunicarse dentro del período de garantía (30 días) al
+                teléfono o correo de la tienda, presentando este certificado y el equipo en las
+                mismas condiciones estéticas de la compra.
+                </li>
+                <li>El equipo será revisado por nuestro servicio técnico en un plazo máximo de 3 a
+                5 días hábiles.
+                </li>
+                <li>Si la falla está cubierta, se procederá a: <ul>
+                    <li>Reparación sin costo para el cliente, con repuestos compatibles de calidad.
+                    </li>
+                    <li>En caso de no ser posible la reparación, se reemplazará el equipo por otro de
+                    similares características, sujeto a disponibilidad.</li>
+                </ul></li>
+                <li>La garantía no cubre la devolución del dinero, a menos que no exista solución
+                técnica posible y no haya disponibilidad de reemplazo, en cuyo caso se
+                reembolsará el valor pagado, descontando el uso del equipo.
+                </li>
+            </ul>
+        </div>
+        <div class="condiciones">
+            <h2>CONDICIONES IMPORTANTES</h2>
+            <ul class="lista_condiciones">
+                <li>
+                    Esta garantía es personal e intransferible
+                </li>
+                <li>La garantía queda automáticamente anulada si el equipo presenta indicios de
+                manipulación, apertura o reparación por personal ajeno a la tienda.
+                </li>
+                <li>El tiempo que el equipo permanezca en revisión no extiende el período de
+                garantía original.
+                </li>
+            </ul>
+        </div>
+        <div class="aceptacion">
+            <h2>ACEPTACIÓN</h2>
+            <p>El comprador declara haber recibido el equipo en perfecto estado de
+            funcionamiento, haber verificado su operación básica (llamadas, Wi-Fi, cámara,
+            carga) y estar de acuerdo con los términos anteriores.
+            </p>
+            <p>Fecha de compra: <span class="fecha"></span>
+            </p>
+            <p>Fecha de vencimiento de garantia: <span id="expira"></span> (30 días despues de la compra)</p>
+        </div>
+        <div class="firmas">
+            <p>Firma del vendedor</p>
+            <p>Firma del comprador</p>
+        </div>
+    </div>
+     <!-- Script para parámetros URL -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    document.getElementById("item").textContent = params.get("item") || "_________________________________________";
+    document.getElementById("imei").textContent = params.get("imei") || "_______________________________";
+
+    const fecha = document.querySelectorAll(".fecha");
+    const valor = params.get("fecha") || "____/____/______";
+    fecha.forEach(e => {
+        e.textContent=valor;
+    });
+
+    document.getElementById("expira").textContent = params.get("expira") || "____/____/______";
+  </script>
+
+</body> 
+</html>
